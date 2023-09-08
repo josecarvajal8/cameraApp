@@ -1,13 +1,14 @@
-import React, {FC, useEffect, useState} from 'react';
-import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
+import React, {FC, useCallback, useEffect, useState} from 'react';
+import {TouchableOpacity, View} from 'react-native';
 import {BaseLayout} from '../../components/layouts';
 import {styles} from './home.styles';
 import Icon from 'react-native-vector-icons/Feather';
 import {colors} from '../../constants/foundations';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {openSettings, request, PERMISSIONS} from 'react-native-permissions';
 import {isIOS} from '../../constants/config';
 import RNFS, {ReadDirItem} from 'react-native-fs';
+import {List} from '../../components/home';
 
 Icon.loadFont();
 
@@ -18,8 +19,12 @@ export const Home: FC = () => {
     useState(false);
   useEffect(() => {
     checkPermissions();
-    loadImages();
   }, []);
+  useFocusEffect(
+    useCallback(() => {
+      loadImages();
+    }, []),
+  );
   const checkPermissions = async () => {
     const cameraPermission = await requestCameraPermission();
     setCameraPermissionGranted(cameraPermission === 'granted');
@@ -57,16 +62,7 @@ export const Home: FC = () => {
   return (
     <BaseLayout title="Gallery">
       <View style={styles.container}>
-        <FlatList
-          data={images}
-          keyExtractor={item => item.path}
-          renderItem={({item}) => (
-            <Image
-              source={{uri: 'file://' + item.path}}
-              style={{width: 200, height: 200}}
-            />
-          )}
-        />
+        <List images={images} />
         <TouchableOpacity onPress={onOpenCamera} style={styles.cameraBtn}>
           <Icon name="camera" size={30} color={colors.accent_dark} />
         </TouchableOpacity>

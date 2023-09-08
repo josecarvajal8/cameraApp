@@ -28,11 +28,17 @@ export const Camera: FC = () => {
     }
   };
   const onCloseCamera = () => navigation.goBack();
-  const decline = () => setCaptureUri('');
+  const decline = () => {
+    setCaptureUri('');
+    setImageName('');
+  };
   const save = async () => {
     try {
       const destinationPath = `${RNFS.DocumentDirectoryPath}/${imgName}`;
       await RNFS.copyFile(captureUri, destinationPath);
+      setCaptureUri('');
+      setImageName('');
+      navigation.goBack();
     } catch (err) {
       console.log(err);
     }
