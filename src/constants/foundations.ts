@@ -5,6 +5,7 @@ export enum colors {
   accent_olive = '#808000',
   common_white = '#FFFFFF',
   common_black = '#000000',
+  decline_red = '#CC0202',
 }
 
 export enum fonts {
