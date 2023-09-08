@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     padding: 16,
-    alignItems: 'center',
   },
   cameraBtn: {
     padding: 10,
