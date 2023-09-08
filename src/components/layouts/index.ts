@@ -1,1 +1,1 @@
-export {BaseLayout} from './base/base-layout';
+export {BaseLayout} from './base/base-layout.component';

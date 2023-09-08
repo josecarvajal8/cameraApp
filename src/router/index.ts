@@ -1,2 +1,1 @@
-/* eslint-disable prettier/prettier */
-export { Router } from './router';
+export {Router} from './router';
