@@ -1,5 +1,5 @@
 import {StyleSheet, Platform} from 'react-native';
-import {colors} from '../../constants/foundations';
+import {colors, fonts, getFontSizes} from '../../constants/foundations';
 
 export const styles = StyleSheet.create({
   container: {
@@ -34,5 +34,11 @@ export const styles = StyleSheet.create({
         shadowRadius: 3.84,
       },
     }),
+  },
+  emptyState: {
+    fontFamily: fonts.light,
+    ...getFontSizes('display'),
+    color: colors.accent_dark,
+    textAlign: 'center',
   },
 });
