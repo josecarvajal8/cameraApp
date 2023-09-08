@@ -1,11 +1,12 @@
 import {StyleSheet, Platform} from 'react-native';
-import {colors} from '../../constants/foundations';
+import {colors, fonts, getFontSizes} from '../../constants/foundations';
 
 export const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
     padding: 16,
+    alignItems: 'center',
   },
   cameraBtn: {
     padding: 10,
@@ -34,5 +35,11 @@ export const styles = StyleSheet.create({
         shadowRadius: 3.84,
       },
     }),
+  },
+  emptyState: {
+    fontFamily: fonts.light,
+    ...getFontSizes('display'),
+    color: colors.accent_dark,
+    textAlign: 'center',
   },
 });

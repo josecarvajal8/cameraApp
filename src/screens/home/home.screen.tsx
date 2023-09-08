@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useEffect, useState} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {BaseLayout} from '../../components/layouts';
 import {styles} from './home.styles';
 import Icon from 'react-native-vector-icons/Feather';
@@ -62,7 +62,13 @@ export const Home: FC = () => {
   return (
     <BaseLayout title="Gallery">
       <View style={styles.container}>
-        <List images={images} />
+        {images.length ? (
+          <List images={images} />
+        ) : (
+          <Text style={styles.emptyState}>
+            {'Nothing here yet. Start taking some pictures'}
+          </Text>
+        )}
         <TouchableOpacity onPress={onOpenCamera} style={styles.cameraBtn}>
           <Icon name="camera" size={30} color={colors.accent_dark} />
         </TouchableOpacity>
