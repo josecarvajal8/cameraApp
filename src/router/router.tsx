@@ -8,7 +8,7 @@ const {Navigator, Screen} = createNativeStackNavigator();
 export const Router: FC = () => {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName={'Camera'}>
+      <Navigator initialRouteName={'Home'}>
         <Screen name={'Home'} component={Home} options={{headerShown: false}} />
         <Screen
           name={'Camera'}
